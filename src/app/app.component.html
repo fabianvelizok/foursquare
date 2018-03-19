@@ -3,6 +3,16 @@
   <h1 [hidden]="isHidden">
     {{ phrase }}
   </h1>
-  <button (click)="togglePhrase()"
-  >{{buttonText}}</button>
+
+  <div>
+    <button (click)="togglePhrase()">{{buttonText}}</button>
+  </div>
+  <hr>
+  <div>
+    <input type="text" placeholder="Name"
+           [(ngModel)]="name">
+    <input type="text" placeholder="Last name"
+           [(ngModel)]="lastName">
+    <p>Your name is {{name}} {{lastName}}</p>
+  </div>
 </div>

@@ -6,9 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  phrase = 'Hello world!';
-  isHidden = true;
-  buttonText = 'Show me the magic phrase :D';
+  phrase: string = 'Hello world!';
+  isHidden: boolean = true;
+  buttonText: string = 'Show me the magic phrase :D';
+
+  name: string = '';
+  nameName: string = '';
 
   togglePhrase () {
     this.isHidden = !this.isHidden;
