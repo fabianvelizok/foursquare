@@ -1,18 +1,7 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1 [hidden]="isHidden">
-    {{ phrase }}
-  </h1>
-
-  <div>
-    <button (click)="togglePhrase()">{{buttonText}}</button>
-  </div>
-  <hr>
-  <div>
-    <input type="text" placeholder="Name"
-           [(ngModel)]="name">
-    <input type="text" placeholder="Last name"
-           [(ngModel)]="lastName">
-    <p>Your name is {{name}} {{lastName}}</p>
-  </div>
-</div>
+<ul>
+  <ng-container *ngFor="let place of places">
+    <li *ngIf="place.active">
+      {{place.name}}
+    </li>
+  </ng-container>
+</ul>
