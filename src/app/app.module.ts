@@ -4,6 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
+import { AgmCoreModule } from '@agm/core';
+
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -11,7 +14,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AgmCoreModule.forRoot({
+      apiKey: environment.googleApiKey
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
