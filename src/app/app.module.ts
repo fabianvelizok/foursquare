@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
 
@@ -10,6 +11,11 @@ import { environment } from '../environments/environment';
 
 import HighlightDirective from './directives/highlight.directive';
 import { CountClicks } from './directives/count-cliks.directive';
+
+const appRoutes: Routes = [
+  { path: '', component: AppComponent },
+  { path: 'places', component: AppComponent }
+];
 
 @NgModule({
   declarations: [
@@ -22,7 +28,8 @@ import { CountClicks } from './directives/count-cliks.directive';
     FormsModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleApiKey
-    })
+    }),
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [],
   bootstrap: [AppComponent]
