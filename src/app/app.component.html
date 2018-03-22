@@ -11,10 +11,12 @@
         [ngSwitch]="place.distance"
         [highlight]="place.subscription"
     >
-      {{place.name}}
-      <span *ngSwitchCase="1" [ngStyle]="{color: 'green'}"> - Near</span>
-      <span *ngSwitchCase="2" [ngStyle]="{color: 'orange'}"> - Far</span>
-      <span *ngSwitchCase="3" [ngStyle]="{color: 'red'}"> - Far away</span>
+      <a count-clicks>
+        {{place.name}}
+        <span *ngSwitchCase="1" [ngStyle]="{color: 'green'}"> - Near</span>
+        <span *ngSwitchCase="2" [ngStyle]="{color: 'orange'}"> - Far</span>
+        <span *ngSwitchCase="3" [ngStyle]="{color: 'red'}"> - Far away</span>
+      </a>
     </li>
   </ng-container>
   <br>

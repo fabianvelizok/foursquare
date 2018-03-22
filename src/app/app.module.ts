@@ -9,11 +9,13 @@ import { AgmCoreModule } from '@agm/core';
 import { environment } from '../environments/environment';
 
 import HighlightDirective from './directives/highlight.directive';
+import { CountClicks } from './directives/count-cliks.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HighlightDirective
+    HighlightDirective,
+    CountClicks
   ],
   imports: [
     BrowserModule,
