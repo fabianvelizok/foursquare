@@ -11,17 +11,22 @@ import { environment } from '../environments/environment';
 
 import HighlightDirective from './directives/highlight.directive';
 import { CountClicks } from './directives/count-cliks.directive';
+import { PlacesComponent } from './places/places.component';
+import { DetailComponent } from './detail/detail.component';
 
 const appRoutes: Routes = [
-  { path: '', component: AppComponent },
-  { path: 'places', component: AppComponent }
+  { path: '', component: PlacesComponent },
+  { path: 'places', component: PlacesComponent },
+  { path: 'detail', component: DetailComponent },
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     HighlightDirective,
-    CountClicks
+    CountClicks,
+    PlacesComponent,
+    DetailComponent,
   ],
   imports: [
     BrowserModule,
