@@ -9,6 +9,7 @@
     <li [ngStyle]="{'text-decoration': place.active ? 'underline' : 'none'}"
         [ngClass]="{'disabled-item': !place.active}"
         [ngSwitch]="place.distance"
+        [highlight]="place.subscription"
     >
       {{place.name}}
       <span *ngSwitchCase="1" [ngStyle]="{color: 'green'}"> - Near</span>

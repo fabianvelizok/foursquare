@@ -8,9 +8,12 @@ import { AgmCoreModule } from '@agm/core';
 
 import { environment } from '../environments/environment';
 
+import HighlightDirective from './directives/highlight.directive';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HighlightDirective
   ],
   imports: [
     BrowserModule,
