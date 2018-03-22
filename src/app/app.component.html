@@ -4,6 +4,18 @@
       {{place.name}}
     </li>
   </ng-container>
+  <li>-------Divider-------</li>
+  <ng-container *ngFor="let place of places">
+    <li [ngStyle]="{'text-decoration': place.active ? 'underline' : 'none'}"
+        [ngClass]="{'disabled-item': !place.active}"
+        [ngSwitch]="place.distance"
+    >
+      {{place.name}}
+      <span *ngSwitchCase="1" [ngStyle]="{color: 'green'}"> - Near</span>
+      <span *ngSwitchCase="2" [ngStyle]="{color: 'orange'}"> - Far</span>
+      <span *ngSwitchCase="3" [ngStyle]="{color: 'red'}"> - Far away</span>
+    </li>
+  </ng-container>
   <br>
   <agm-map [latitude]="lat" [longitude]="lng">
     <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>

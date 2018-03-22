@@ -7,9 +7,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   places: any = [
-    { active: true, name: 'Argentina' },
-    { active: true, name: 'España' },
-    { active: false, name: 'India' },
+    { distance: 1, active: true, name: 'Argentina' },
+    { distance: 2, active: true, name: 'España' },
+    { distance: 3, active: false, name: 'India' },
+    { distance: 3, active: false, name: 'China' },
+    { distance: 1, active: true, name: 'Colombia' },
   ];
 
   lat: number = 51.678418;
