@@ -1,0 +1,57 @@
+<nav aria-label="breadcrumb" class="breadcrumb-wrapper">
+  <div class="container">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a routerLink="/places">Places</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Create place</li>
+    </ol>
+  </div>
+</nav>
+
+<div class="container">
+  <form>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" class="form-control" id="name"
+             placeholder="Enter name" [(ngModel)]="place.name" name="name">
+    </div>
+
+    <div class="form-group">
+      <label for="distance">Distance</label>
+      <input type="number" class="form-control" id="distance"
+             placeholder="Enter distance" [(ngModel)]="place.distance" name="distance">
+    </div>
+
+    <div class="form-group">
+      <label for="subscription">Subscription</label>
+      <div class="input-group mb-3">
+        <select class="custom-select w-100" id="subscription"
+                [(ngModel)]="place.subscription" name="subscription">
+          <option selected value="free">Free</option>
+          <option value="premium">Premium</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" placeholder="Enter description"
+                [(ngModel)]="place.description" name="description"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="subscription">Active</label>
+      <div class="input-group mb-3">
+        <select class="custom-select w-100" id="subscription"
+                [(ngModel)]="place.active" name="active">
+          <option value="yes" selected>Yes</option>
+          <option value="no">No</option>
+        </select>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" (click)="createPlace()">Submit</button>
+    <a class="btn btn-light" routerLink="/">Cancel</a>
+  </form>
+</div>

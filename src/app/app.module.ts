@@ -22,12 +22,14 @@ import { ContactComponent } from './contact/contact.component';
 import { PlacesService } from './services/places.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
+import { CreatePlaceComponent } from './create-place/create-place.component';
 
 const appRoutes: Routes = [
   { path: '', component: PlacesComponent },
   { path: 'places', component: PlacesComponent },
   { path: 'detail/:id', component: DetailComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'create-place', component: CreatePlaceComponent },
 ];
 
 @NgModule({
@@ -40,6 +42,7 @@ const appRoutes: Routes = [
     ContactComponent,
     HeaderComponent,
     FooterComponent,
+    CreatePlaceComponent,
   ],
   imports: [
     BrowserModule,

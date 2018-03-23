@@ -1,8 +1,11 @@
 import { Injectable } from '@angular/core';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 @Injectable()
 
 export class PlacesService {
+  constructor(private db: AngularFirestore) {}
+
   places: any = [
     { id: 1, subscription: 'premium', distance: 1, active: true, name: 'Argentina', description: 'Some great place in Argentina' },
     { id: 2, subscription: 'free', distance: 2, active: true, name: 'España', description: 'Some great place in España' },
@@ -20,6 +23,10 @@ export class PlacesService {
       return place.id === parseInt(id, 10);
     });
     return currentPlace;
+  }
+
+  public save (place) {
+    return this.db.collection('places').add(place);
   }
 }
 
