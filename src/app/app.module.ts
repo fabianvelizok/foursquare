@@ -15,6 +15,7 @@ import { CountClicks } from './directives/count-cliks.directive';
 import { PlacesComponent } from './places/places.component';
 import { DetailComponent } from './detail/detail.component';
 import { ContactComponent } from './contact/contact.component';
+import { PlacesService } from './services/places.service';
 
 const appRoutes: Routes = [
   { path: '', component: PlacesComponent },
@@ -41,7 +42,7 @@ const appRoutes: Routes = [
     NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [PlacesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
