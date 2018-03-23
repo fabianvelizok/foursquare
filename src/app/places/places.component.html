@@ -1,15 +1,9 @@
 <h1>Places</h1>
 <ul>
   <ng-container *ngFor="let place of places">
-    <li *ngIf="place.active">
-      {{place.name}}
-    </li>
-  </ng-container>
-  <li>-------Divider-------</li>
-  <ng-container *ngFor="let place of places">
     <li [ngStyle]="{'text-decoration': place.active ? 'underline' : 'none'}" [ngClass]="{'disabled-item': !place.active}" [ngSwitch]="place.distance"
       [highlight]="place.subscription">
-      <a count-clicks>
+      <a count-clicks routerLink="/detail/{{place.id}}" [queryParams]="{action: 'view'}">
         {{place.name}}
         <span *ngSwitchCase="1" [ngStyle]="{color: 'green'}"> - Near</span>
         <span *ngSwitchCase="2" [ngStyle]="{color: 'orange'}"> - Far</span>
