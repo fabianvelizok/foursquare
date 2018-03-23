@@ -4,5 +4,13 @@
 
 export const environment = {
   production: true,
-  googleApiKey: ''
+  googleApiKey: '',
+  firebase: {
+    apiKey: '',
+    authDomain: '',
+    databaseURL: '',
+    projectId: '',
+    storageBucket: '',
+    messagingSenderId: ''
+  }
 };
