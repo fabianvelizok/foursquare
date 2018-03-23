@@ -1,1 +1,18 @@
-<h1>Detail</h1>
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item">
+      <a routerLink="/places">Places</a>
+    </li>
+    <li class="breadcrumb-item active" aria-current="page">{{place.name}}</li>
+  </ol>
+</nav>
+
+<div class="container">
+  <h1>{{place.name}}</h1>
+  <small>{{place.distance}}</small>
+  <br>
+  <div class="highlight">
+    <p>{{place.description}}</p>
+    <strong>{{place.subscription}}</strong>
+  </div>
+</div>

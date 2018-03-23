@@ -8,8 +8,21 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class DetailComponent {
+  places: any = [
+    { id: 1, subscription: 'premium', distance: 1, active: true, name: 'Argentina' },
+    { id: 2, subscription: 'free', distance: 2, active: true, name: 'España' },
+    { id: 3, subscription: 'free', distance: 3, active: false, name: 'India' },
+    { id: 4, subscription: 'free', distance: 3, active: false, name: 'China' },
+    { id: 5, subscription: 'premium', distance: 1, active: true, name: 'Colombia' },
+  ];
+
+  id = null;
+  place = {};
+
   constructor(private route: ActivatedRoute) {
-    console.log(this.route.snapshot.params['id']);
-    console.log(this.route.snapshot.queryParams['action']);
+    this.id = this.route.snapshot.params['id'];
+    this.place = this.places.find((place) => {
+      return place.id === parseInt(this.id, 10);
+    });
   }
 }
