@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 
 import { AgmCoreModule } from '@agm/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { environment } from '../environments/environment';
 
@@ -34,6 +35,7 @@ const appRoutes: Routes = [
     AgmCoreModule.forRoot({
       apiKey: environment.googleApiKey
     }),
+    NgbModule.forRoot(),
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],
