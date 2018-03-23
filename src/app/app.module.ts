@@ -16,6 +16,8 @@ import { PlacesComponent } from './places/places.component';
 import { DetailComponent } from './detail/detail.component';
 import { ContactComponent } from './contact/contact.component';
 import { PlacesService } from './services/places.service';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 const appRoutes: Routes = [
   { path: '', component: PlacesComponent },
@@ -32,6 +34,8 @@ const appRoutes: Routes = [
     PlacesComponent,
     DetailComponent,
     ContactComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
