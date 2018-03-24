@@ -12,6 +12,8 @@ import { Observable } from 'rxjs';
 export class PlacesService {
   placesCollection: AngularFirestoreCollection<Place>;
   places: Observable<Place[]>;
+  placeDoc: AngularFirestoreDocument<Place>;
+  place: Observable<Place> = null;
 
   constructor(public db: AngularFirestore) {
     this.places = this.db.collection('places').snapshotChanges().map((changes) => {
@@ -29,7 +31,9 @@ export class PlacesService {
   }
 
   public getById (id) {
-    return this.db.doc(`places/${id}`).ref.get();
+    this.placeDoc = this.db.doc(`places/${id}`);
+    this.place = this.placeDoc.valueChanges();
+    return this.place;
   }
 
   public save (place) {

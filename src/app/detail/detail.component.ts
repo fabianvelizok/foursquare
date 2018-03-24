@@ -19,15 +19,9 @@ export class DetailComponent implements OnInit {
 
   ngOnInit() {
     const self = this;
-    this.placesService.getById(this.id)
-      .then(function (doc) {
-        if (doc.exists) {
-          self.place = doc.data();
-        } else {
-          console.error('Document not found.');
-        }
-      }).catch((error) => {
-        console.error(error);
-      });
+
+    this.placesService.getById(this.id).subscribe((place) => {
+      this.place = place;
+    });
   }
 }
