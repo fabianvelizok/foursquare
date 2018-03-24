@@ -9,12 +9,25 @@ import { PlacesService } from '../services/places.service';
   styleUrls: ['./detail.component.css']
 })
 
-export class DetailComponent {
+export class DetailComponent implements OnInit {
   id = null;
   place = {};
 
   constructor(private route: ActivatedRoute, private placesService: PlacesService) {
     this.id = this.route.snapshot.params['id'];
-    this.place = placesService.getById(this.id);
+  }
+
+  ngOnInit() {
+    const self = this;
+    this.placesService.getById(this.id)
+      .then(function (doc) {
+        if (doc.exists) {
+          self.place = doc.data();
+        } else {
+          console.error('Document not found.');
+        }
+      }).catch((error) => {
+        console.error(error);
+      });
   }
 }

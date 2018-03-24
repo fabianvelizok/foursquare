@@ -1,33 +1,38 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from 'angularfire2/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+  AngularFirestoreDocument
+} from 'angularfire2/firestore';
+
+import { Place } from '../models/place';
+import { Observable } from 'rxjs';
 
 @Injectable()
-
 export class PlacesService {
-  constructor(private db: AngularFirestore) {}
+  placesCollection: AngularFirestoreCollection<Place>;
+  places: Observable<Place[]>;
 
-  places: any = [
-    { id: 1, subscription: 'premium', distance: 1, active: true, name: 'Argentina', description: 'Some great place in Argentina' },
-    { id: 2, subscription: 'free', distance: 2, active: true, name: 'España', description: 'Some great place in España' },
-    { id: 3, subscription: 'free', distance: 3, active: false, name: 'India', description: 'Some great place in India' },
-    { id: 4, subscription: 'free', distance: 3, active: false, name: 'China', description: 'Some great place in China' },
-    { id: 5, subscription: 'premium', distance: 1, active: true, name: 'Colombia', description: 'Some great place in Colombia' },
-  ];
+  constructor(public db: AngularFirestore) {
+    this.places = this.db.collection('places').snapshotChanges().map((changes) => {
+      return changes.map((a) => {
+        // Get place id from db.
+        const place = a.payload.doc.data() as Place;
+        place.id = a.payload.doc.id;
+        return place;
+      });
+    });
+  }
 
   public getList () {
     return this.places;
   }
 
   public getById (id) {
-    const currentPlace = this.places.find((place) => {
-      return place.id === parseInt(id, 10);
-    });
-    return currentPlace;
+    return this.db.doc(`places/${id}`).ref.get();
   }
 
   public save (place) {
     return this.db.collection('places').add(place);
   }
 }
-
-

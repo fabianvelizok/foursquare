@@ -5,13 +5,12 @@
   <br>
   <ul>
     <ng-container *ngFor="let place of places">
-      <li [ngStyle]="{'text-decoration': place.active ? 'underline' : 'none'}" [ngClass]="{'disabled-item': !place.active}" [ngSwitch]="place.distance"
-        [highlight]="place.subscription">
+      <li [highlight]="place.subscription">
         <a count-clicks routerLink="/detail/{{place.id}}">
           {{place.name}}
-          <span *ngSwitchCase="1" [ngStyle]="{color: 'green'}"> - Near</span>
-          <span *ngSwitchCase="2" [ngStyle]="{color: 'orange'}"> - Far</span>
-          <span *ngSwitchCase="3" [ngStyle]="{color: 'red'}"> - Far away</span>
+          <span> - Near</span>
+          <span> - Far</span>
+          <span> - Far away</span>
         </a>
       </li>
     </ng-container>
