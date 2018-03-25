@@ -7,6 +7,7 @@ import {
 
 import { Place } from '../models/place';
 import { Observable } from 'rxjs';
+import { Http } from '@angular/http';
 
 @Injectable()
 export class PlacesService {
@@ -15,7 +16,7 @@ export class PlacesService {
   placeDoc: AngularFirestoreDocument<Place>;
   place: Observable<Place> = null;
 
-  constructor(public db: AngularFirestore) {
+  constructor(public db: AngularFirestore, private http: Http) {
     this.places = this.db.collection('places').snapshotChanges().map((changes) => {
       return changes.map((a) => {
         // Get place id from db.
@@ -38,5 +39,10 @@ export class PlacesService {
 
   public save (place) {
     return this.db.collection('places').add(place);
+  }
+
+  public getGeolocation (address) {
+    const url = `http://maps.google.com/maps/api/geocode/json?address=${address}`;
+    return this.http.get(url);
   }
 }

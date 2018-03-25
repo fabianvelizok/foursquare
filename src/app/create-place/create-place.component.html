@@ -13,21 +13,19 @@
   <form>
     <div class="form-group">
       <label for="name">Name</label>
-      <input type="text" class="form-control" id="name"
-             placeholder="Enter name" [(ngModel)]="place.name" name="name">
+      <input type="text" class="form-control" id="name" placeholder="Enter name" [(ngModel)]="place.name" name="name">
     </div>
 
     <div class="form-group">
-      <label for="distance">Distance</label>
-      <input type="number" class="form-control" id="distance"
-             placeholder="Enter distance" [(ngModel)]="place.distance" name="distance">
+      <label for="description">Description</label>
+      <textarea class="form-control" id="description" placeholder="Enter description" [(ngModel)]="place.description" name="description"></textarea>
     </div>
+
 
     <div class="form-group">
       <label for="subscription">Subscription</label>
       <div class="input-group mb-3">
-        <select class="custom-select w-100" id="subscription"
-                [(ngModel)]="place.subscription" name="subscription">
+        <select class="custom-select w-100" id="subscription" [(ngModel)]="place.subscription" name="subscription" value="free">
           <option selected value="free">Free</option>
           <option value="premium">Premium</option>
         </select>
@@ -35,23 +33,32 @@
     </div>
 
     <div class="form-group">
-      <label for="description">Description</label>
-      <textarea class="form-control" id="description" placeholder="Enter description"
-                [(ngModel)]="place.description" name="description"></textarea>
-    </div>
-
-    <div class="form-group">
       <label for="subscription">Active</label>
       <div class="input-group mb-3">
-        <select class="custom-select w-100" id="subscription"
-                [(ngModel)]="place.active" name="active">
+        <select class="custom-select w-100" id="subscription" [(ngModel)]="place.active" name="active" value="yes">
           <option value="yes" selected>Yes</option>
           <option value="no">No</option>
         </select>
       </div>
     </div>
 
-    <button class="btn btn-primary" (click)="createPlace()">Submit</button>
+    <h2>Adress</h2>
+    <div class="form-group">
+      <label for="street">Street</label>
+      <input type="text" class="form-control" id="street" placeholder="Enter street" [(ngModel)]="place.street" name="street">
+    </div>
+
+    <div class="form-group">
+      <label for="province">Province</label>
+      <input type="text" class="form-control" id="province" placeholder="Enter province" [(ngModel)]="place.province" name="province">
+    </div>
+
+    <div class="form-group">
+      <label for="country">Country</label>
+      <input type="text" class="form-control" id="country" placeholder="Enter country" [(ngModel)]="place.country" name="country">
+    </div>
+
+    <button class="btn btn-primary" (click)="createPlace()">Send</button>
     <a class="btn btn-light" routerLink="/">Cancel</a>
   </form>
 </div>

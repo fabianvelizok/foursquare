@@ -14,11 +14,24 @@ export class CreatePlaceComponent {
   constructor(private placesService: PlacesService) {}
 
   private createPlace() {
-    this.placesService.save(this.place).then(function (docRef) {
-      console.log("Document written with ID: ", docRef.id);
-    })
-    .catch(function (error) {
-      console.error("Error adding document: ", error);
-    });
+    const address = `${this.place.street}, ${this.place.province}, ${this.place.country}`;
+    this.placesService.getGeolocation(address)
+      .subscribe((response) => {
+        const data = response.json();
+        let lat = 0;
+        let lng = 0;
+
+        if (data.results.length) {
+          lat = data.results[0].geometry.location.lat;
+          lng = data.results[0].geometry.location.lng;
+        }
+
+        this.place.lat = lat;
+        this.place.lng = lng;
+
+        this.placesService.save(this.place)
+          .then(() => { console.log('Place created successfully.') })
+          .catch(error => console.error(error));
+      });
   }
 }
