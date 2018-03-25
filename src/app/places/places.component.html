@@ -1,12 +1,12 @@
 <div class="container">
   <h1>Places</h1>
-  <a class="btn btn-primary btn-sm" routerLink="/create-place">Create place</a>
+  <a class="btn btn-primary btn-sm" routerLink="/create-place/new">Create place</a>
   <br>
   <br>
   <ul>
     <ng-container *ngFor="let place of places">
       <li [highlight]="place.subscription">
-        <a count-clicks routerLink="/detail/{{place.id}}">
+        <a count-clicks routerLink="/create-place/{{place.id}}">
           {{place.name}}
           <span> - Near</span>
           <span> - Far</span>
@@ -15,8 +15,9 @@
       </li>
     </ng-container>
     <br>
-    <agm-map [latitude]="lat" [longitude]="lng">
-      <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
-    </agm-map>
   </ul>
 </div>
+<agm-map *ngIf="places.length" [latitude]="places[0].lat" [longitude]="places[0].lng">
+  <agm-marker *ngFor="let place of places" [latitude]="place.lat" [longitude]="place.lng">
+  </agm-marker>
+</agm-map>

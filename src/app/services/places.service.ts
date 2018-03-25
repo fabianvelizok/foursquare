@@ -45,4 +45,8 @@ export class PlacesService {
     const url = `http://maps.google.com/maps/api/geocode/json?address=${address}`;
     return this.http.get(url);
   }
+
+  public update(place: Place) {
+    this.placeDoc.update(place);
+  }
 }

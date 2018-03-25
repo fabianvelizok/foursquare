@@ -30,7 +30,8 @@ const appRoutes: Routes = [
   { path: 'places', component: PlacesComponent },
   { path: 'detail/:id', component: DetailComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'create-place', component: CreatePlaceComponent },
+  { path: 'create-place/new', component: CreatePlaceComponent },
+  { path: 'create-place/:id', component: CreatePlaceComponent }
 ];
 
 @NgModule({
