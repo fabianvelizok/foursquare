@@ -8,15 +8,19 @@ import { PlacesService } from '../services/places.service';
 })
 export class PlacesComponent implements OnInit {
   places = [];
+  error = null;
 
   constructor(private placesService: PlacesService) {}
 
   ngOnInit(){
     this.placesService.getListHttp()
-      .subscribe((response) => {
-        const placeJson = response.json();
-        this.places = Object.keys(placeJson).map(key => placeJson[key]);
-      });
+      .subscribe(
+        (response) => {
+          const placeJson = response.json();
+          this.places = Object.keys(placeJson).map(key => placeJson[key]);
+        },
+        error => this.error = `Error: ${error.statusText}.`
+      );
   }
 
   lat: number = 51.678418;
