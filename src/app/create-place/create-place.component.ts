@@ -48,11 +48,10 @@ export class CreatePlaceComponent implements OnInit {
         this.place.lat = lat;
         this.place.lng = lng;
 
-        this.placesService.save(this.place)
-          .then(() => {
+        this.placesService.saveHttp(this.place)
+          .subscribe(() => {
             this.cleanFormAndRedirect();
-          })
-          .catch(error => console.error(error));
+          });
       });
   }
 

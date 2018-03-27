@@ -7,7 +7,9 @@ import {
 
 import { Place } from '../models/place';
 import { Observable } from 'rxjs';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
+
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class PlacesService {
@@ -49,4 +51,13 @@ export class PlacesService {
   public update(place: Place) {
     this.placeDoc.update(place);
   }
+
+  // Using http instead of sockets.
+
+  public saveHttp (place) {
+    const endpoint = `${environment.firebase.databaseURL}/places.json`;
+    const headers = new Headers({'Content-Type': 'application/json'});
+    return this.http.post(endpoint, place, { headers });
+  }
+
 }
