@@ -9,12 +9,9 @@
   <ul>
     <ng-container *ngFor="let place of places">
       <li [highlight]="place.subscription">
-        <a count-clicks routerLink="/create-place/{{place.id}}">
-          {{place.name}}
-          <span> - Near</span>
-          <span> - Far</span>
-          <span> - Far away</span>
-        </a>
+        <a routerLink="/create-place/{{place.id}}">{{place.name}}</a>
+        <small> - {{place.createdAt | date: 'short'}}</small>
+        <p [innerHtml]="place.description | linkifystring"></p>
       </li>
     </ng-container>
     <br>

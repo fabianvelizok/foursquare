@@ -13,11 +13,10 @@ export class PlacesComponent implements OnInit {
   constructor(private placesService: PlacesService) {}
 
   ngOnInit(){
-    this.placesService.getListHttp()
+    this.placesService.getList()
       .subscribe(
         (response) => {
-          const placeJson = response.json();
-          this.places = Object.keys(placeJson).map(key => placeJson[key]);
+          this.places = response;
         },
         error => this.error = `Error: ${error.statusText}.`
       );

@@ -9,4 +9,5 @@ export interface Place {
   country: string;
   lat: number;
   lng: number;
+  createdAt: number;
 }

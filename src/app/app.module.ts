@@ -25,6 +25,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CreatePlaceComponent } from './create-place/create-place.component';
 
+import { LinkifyStringPipe } from './pipes/linkifystring.pipe';
+
 const appRoutes: Routes = [
   { path: '', component: PlacesComponent },
   { path: 'places', component: PlacesComponent },
@@ -45,6 +47,7 @@ const appRoutes: Routes = [
     HeaderComponent,
     FooterComponent,
     CreatePlaceComponent,
+    LinkifyStringPipe,
   ],
   imports: [
     BrowserModule,
