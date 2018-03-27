@@ -12,9 +12,11 @@ export class PlacesComponent implements OnInit {
   constructor(private placesService: PlacesService) {}
 
   ngOnInit(){
-    this.placesService.getList().subscribe((places) => {
-      this.places = places;
-    });
+    this.placesService.getListHttp()
+      .subscribe((response) => {
+        const placeJson = response.json();
+        this.places = Object.keys(placeJson).map(key => placeJson[key]);
+      });
   }
 
   lat: number = 51.678418;

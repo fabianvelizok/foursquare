@@ -13,6 +13,8 @@ import { environment } from '../../environments/environment';
 
 @Injectable()
 export class PlacesService {
+  FIREBASE_DB = environment.firebase.databaseURL;
+
   placesCollection: AngularFirestoreCollection<Place>;
   places: Observable<Place[]>;
   placeDoc: AngularFirestoreDocument<Place>;
@@ -55,9 +57,14 @@ export class PlacesService {
   // Using http instead of sockets.
 
   public saveHttp (place) {
-    const endpoint = `${environment.firebase.databaseURL}/places.json`;
+    const endpoint = `${this.FIREBASE_DB}/places.json`;
     const headers = new Headers({'Content-Type': 'application/json'});
     return this.http.post(endpoint, place, { headers });
+  }
+
+  public getListHttp() {
+    const endpoint = `${this.FIREBASE_DB}/places.json`;
+    return this.http.get(endpoint);
   }
 
 }
