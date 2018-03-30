@@ -27,6 +27,8 @@ import { FooterComponent } from './footer/footer.component';
 import { CreatePlaceComponent } from './create-place/create-place.component';
 
 import { LinkifyStringPipe } from './pipes/linkifystring.pipe';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 const appRoutes: Routes = [
   { path: '', component: PlacesComponent },
@@ -34,7 +36,9 @@ const appRoutes: Routes = [
   { path: 'detail/:id', component: DetailComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'create-place/new', component: CreatePlaceComponent },
-  { path: 'create-place/:id', component: CreatePlaceComponent }
+  { path: 'create-place/:id', component: CreatePlaceComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
 ];
 
 @NgModule({
@@ -49,6 +53,8 @@ const appRoutes: Routes = [
     FooterComponent,
     CreatePlaceComponent,
     LinkifyStringPipe,
+    LoginComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,
