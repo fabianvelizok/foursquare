@@ -7,12 +7,14 @@ export class AuthService {
   }
 
   public login (data) {
-    console.log('LOGIN');
+    this.angularFireAuth.auth.signInWithEmailAndPassword(data.email, data.password)
+      .then(response => console.log('User logged in successfully.'))
+      .catch(error => console.error(error));
   }
 
   public register (data) {
     this.angularFireAuth.auth.createUserWithEmailAndPassword(data.email, data.password)
-      .then(response => console.log(response))
+      .then(response => console.log('User registered successfully.'))
       .catch(error => console.error(error));
   }
 }
