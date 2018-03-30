@@ -1,3 +1,5 @@
+// Core
+import { AngularFireModule } from 'angularfire2';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -5,31 +7,38 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-import { AppComponent } from './app.component';
-
+// Libs
 import { AgmCoreModule } from '@agm/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import { environment } from '../environments/environment';
-
-import HighlightDirective from './directives/highlight.directive';
-import { CountClicks } from './directives/count-cliks.directive';
+// Components
+import { AppComponent } from './app.component';
 import { PlacesComponent } from './places/places.component';
 import { DetailComponent } from './detail/detail.component';
 import { ContactComponent } from './contact/contact.component';
-import { PlacesService } from './services/places.service';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { CreatePlaceComponent } from './create-place/create-place.component';
-
-import { LinkifyStringPipe } from './pipes/linkifystring.pipe';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 
+// Env
+import { environment } from '../environments/environment';
+
+// Directives
+import HighlightDirective from './directives/highlight.directive';
+import { CountClicks } from './directives/count-cliks.directive';
+
+// Services
+import { PlacesService } from './services/places.service';
+
+// Pipes
+import { LinkifyStringPipe } from './pipes/linkifystring.pipe';
+
+// Routes
 const appRoutes: Routes = [
   { path: '', component: PlacesComponent },
   { path: 'places', component: PlacesComponent },
