@@ -5,7 +5,10 @@
   <h1>Places</h1>
   <a class="btn btn-primary btn-sm" routerLink="/create-place/new">Create place</a>
   <br>
-  <div id="square" [@animatedContainer]="state"></div>
+  <div id="square" [@animatedContainer]="state"
+       (@animatedContainer.start)="animationStart($event)"
+       (@animatedContainer.done)="animationDone($event)"
+  ></div>
   <button class="btn btn-default" (click)="animate()">Animate</button>
   <br>
   <ul>

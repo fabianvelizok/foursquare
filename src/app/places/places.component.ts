@@ -44,4 +44,12 @@ export class PlacesComponent implements OnInit {
     this.state = (this.state === 'final') ?
       'initial' : 'final';
   }
+
+  animationStart(event) {
+    console.log('Start', event);
+  }
+
+  animationDone(event) {
+    console.log('Done', event);
+  }
 }
