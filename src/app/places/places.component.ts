@@ -9,32 +9,30 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   animations: [
     trigger('animatedContainer', [
       state('initial', style({
-        opacity: 0,
-        backgroundColor: 'green',
-        transform: 'rotate3d(0, 0, 0, 0deg)'
+        opacity: 0
       })),
-      state('initial', style({
-        opacity: 1,
-        backgroundColor: 'yellow',
-        transform: 'rotate3d(5, 10, 20, 30deg)'
+      state('final', style({
+        opacity: 1
       })),
-      transition('initial => final', animate(1000)),
-      transition('final => initial', animate(500)),
+      transition('initial => final', animate(2000)),
+      transition('final => initial', animate(1000)),
     ])
   ]
 })
 export class PlacesComponent implements OnInit {
   places = [];
   error = null;
-  state = 'initial'
+  state = null;
 
   constructor(private placesService: PlacesService) {}
 
   ngOnInit(){
+    this.state = 'initial';
     this.placesService.getList()
       .subscribe(
         (response) => {
           this.places = response;
+          this.state = 'final';
         },
         error => this.error = `Error: ${error.statusText}.`
       );

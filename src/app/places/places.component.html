@@ -2,25 +2,43 @@
   <div class="alert alert-danger" role="alert" [hidden]="!error">
     {{error}}
   </div>
-  <h1>Places</h1>
-  <a class="btn btn-primary btn-sm" routerLink="/create-place/new">Create place</a>
-  <br>
-  <div id="square" [@animatedContainer]="state"
-       (@animatedContainer.start)="animationStart($event)"
-       (@animatedContainer.done)="animationDone($event)"
-  ></div>
-  <button class="btn btn-default" (click)="animate()">Animate</button>
-  <br>
-  <ul>
-    <ng-container *ngFor="let place of places">
-      <li [highlight]="place.subscription">
-        <a routerLink="/create-place/{{place.id}}">{{place.name}}</a>
-        <small> - {{place.createdAt | date: 'short'}}</small>
-        <p [innerHtml]="place.description | linkifystring"></p>
-      </li>
-    </ng-container>
-    <br>
-  </ul>
+  <div class="row">
+    <div class="col-6">
+      <div class="p-3">
+        <h2>Places</h2>
+        <ul>
+          <ng-container *ngFor="let place of places">
+            <li>
+              <a routerLink="/create-place/{{place.id}}">{{place.name}}</a>
+              <small> - {{place.createdAt | date: 'short'}}</small>
+              <i class="fa fa-star text-warning" *ngIf="place.subscription === 'premium'"></i>
+              <p [innerHtml]="place.description | linkifystring"></p>
+            </li>
+          </ng-container>
+          <br>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="p-3"  [@animatedContainer]="state"
+           (@animatedContainer.start)="animationStart($event)"
+           (@animatedContainer.done)="animationDone($event)">
+        <h2>Featured</h2>
+        <ng-container *ngFor="let place of places">
+          <div [highlight]="place.subscription"
+               *ngIf="place.subscription === 'premium'">
+            <a routerLink="/create-place/{{place.id}}">{{place.name}}</a>
+            <small> - {{place.createdAt | date: 'short'}}</small>
+            <p [innerHtml]="place.description | linkifystring"></p>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="text-center m-3">
+    <a class="btn btn-primary btn-lg" routerLink="/create-place/new">Create place</a>
+  </div>
 </div>
 <agm-map *ngIf="places.length" [latitude]="places[0].lat" [longitude]="places[0].lng">
   <agm-marker *ngFor="let place of places" [latitude]="place.lat" [longitude]="place.lng">
