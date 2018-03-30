@@ -14,4 +14,12 @@ export class LoginComponent {
   private login() {
     this.authService.login(this.loginForm);
   }
+
+  private loginFacebook () {
+    this.authService.facebookLogin();
+  }
+
+  private loginGoogle () {
+    alert('Not implemented yet.');
+  }
 }

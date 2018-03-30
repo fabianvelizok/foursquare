@@ -25,6 +25,22 @@
         </div>
         <button type="submit" class="btn btn-primary btn-block"
                 (click)="login()">Login</button>
+        <hr>
+        <div class="row">
+          <div class="col-6">
+            <button type="submit" class="btn btn btn-secondary btn-block"
+                    (click)="loginFacebook()">
+              <i class="fa fa-facebook-f"></i>
+            </button>
+          </div>
+          <div class="col-6">
+            <button type="submit" class="btn btn btn-danger btn-block"
+                    (click)="loginGoogle()">
+              <i class="fa fa-google"></i>
+            </button>
+          </div>
+        </div>
+        <hr>
         <a class="btn btn-link btn-block" routerLink="/">Cancel</a>
       </form>
     </div>
