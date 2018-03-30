@@ -20,6 +20,6 @@ export class LoginComponent {
   }
 
   private loginGoogle () {
-    alert('Not implemented yet.');
+    this.authService.googleLogin();
   }
 }

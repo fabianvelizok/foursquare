@@ -44,10 +44,10 @@ export class PlacesComponent implements OnInit {
   }
 
   animationStart(event) {
-    console.log('Start', event);
+    // console.log('Start', event);
   }
 
   animationDone(event) {
-    console.log('Done', event);
+    // console.log('Done', event);
   }
 }

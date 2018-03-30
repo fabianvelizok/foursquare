@@ -29,4 +29,10 @@ export class AuthService {
       .then(response => console.log('User logged in with facebook successfully.'))
       .catch(error => console.error(error));
   }
+
+  public googleLogin () {
+    this.angularFireAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      .then(response => console.log('User logged in with google successfully.'))
+      .catch(error => console.error(error));
+  }
 }
