@@ -8,11 +8,13 @@ import { AuthService } from './services/auth.service';
 })
 export class AppComponent {
   loggedIn = false;
+  currentUser: any = null;
 
   constructor(private authService: AuthService) {
     this.authService.isUserLoggedIn().subscribe(
       (response) => {
         this.loggedIn = Boolean(response && response.uid);
+        this.currentUser = this.authService.getCurrentUser();
       },
       (error) => {
         console.error(error);

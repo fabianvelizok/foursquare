@@ -24,6 +24,10 @@ export class AuthService {
     return this.angularFireAuth.authState;
   }
 
+  public getCurrentUser () {
+    return this.angularFireAuth.auth.currentUser;
+  }
+
   public facebookLogin () {
     this.angularFireAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
       .then(response => console.log('User logged in with facebook successfully.'))
@@ -34,5 +38,9 @@ export class AuthService {
     this.angularFireAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
       .then(response => console.log('User logged in with google successfully.'))
       .catch(error => console.error(error));
+  }
+
+  public logout () {
+    this.angularFireAuth.auth.signOut();
   }
 }

@@ -17,14 +17,24 @@
       </ul>
     </div>
 
+    <!-- Not logged in -->
     <ul class="nav navbar-nav navbar-right" *ngIf="!loggedIn">
       <li class="nav-item">
-        <a class="nav-link text-white" routerLink="/login">Login</a>
+        <a class="nav-link text-white" routerLink="/login">Log in</a>
       </li>
       <li class="nav-item">
         <a class="nav-link text-white" routerLink="/register">Register</a>
       </li>
     </ul>
 
+    <!-- Logged in -->
+    <ul class="nav navbar-nav navbar-right" *ngIf="loggedIn">
+      <li class="nav-item">
+        <span class="nav-link text-white">{{currentUser.email}}</span>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link btn btn-secondary" (click)="logout()">Log out</a>
+      </li>
+    </ul>
   </div>
 </nav>
