@@ -34,6 +34,7 @@ import { CountClicks } from './directives/count-cliks.directive';
 
 // Services
 import { PlacesService } from './services/places.service';
+import { AuthService } from './services/auth.service';
 
 // Pipes
 import { LinkifyStringPipe } from './pipes/linkifystring.pipe';
@@ -80,7 +81,7 @@ const appRoutes: Routes = [
     HttpModule,
     BrowserAnimationsModule,
   ],
-  providers: [PlacesService],
+  providers: [PlacesService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
