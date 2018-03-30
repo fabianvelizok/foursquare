@@ -35,6 +35,7 @@ import { CountClicks } from './directives/count-cliks.directive';
 // Services
 import { PlacesService } from './services/places.service';
 import { AuthService } from './services/auth.service';
+import { GuardService } from './services/guard.service';
 
 // Pipes
 import { LinkifyStringPipe } from './pipes/linkifystring.pipe';
@@ -45,7 +46,9 @@ const appRoutes: Routes = [
   { path: 'places', component: PlacesComponent },
   { path: 'detail/:id', component: DetailComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'create-place/new', component: CreatePlaceComponent },
+  { path: 'create-place/new', component: CreatePlaceComponent, canActivate: [
+    GuardService
+  ]},
   { path: 'create-place/:id', component: CreatePlaceComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
@@ -81,7 +84,11 @@ const appRoutes: Routes = [
     HttpModule,
     BrowserAnimationsModule,
   ],
-  providers: [PlacesService, AuthService],
-  bootstrap: [AppComponent]
+  providers: [
+    PlacesService,
+    AuthService,
+    GuardService,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

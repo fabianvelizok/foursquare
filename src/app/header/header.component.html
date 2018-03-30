@@ -17,7 +17,7 @@
       </ul>
     </div>
 
-    <ul class="nav navbar-nav navbar-right">
+    <ul class="nav navbar-nav navbar-right" *ngIf="!loggedIn">
       <li class="nav-item">
         <a class="nav-link text-white" routerLink="/login">Login</a>
       </li>
