@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PlacesService } from '../services/places.service';
+import { PlacesService } from '../../services/places.service';
 import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({

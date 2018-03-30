@@ -16,14 +16,14 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 
 // Components
 import { AppComponent } from './app.component';
-import { PlacesComponent } from './places/places.component';
-import { DetailComponent } from './detail/detail.component';
-import { ContactComponent } from './contact/contact.component';
-import { HeaderComponent } from './header/header.component';
-import { FooterComponent } from './footer/footer.component';
-import { CreatePlaceComponent } from './create-place/create-place.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
+import { PlacesComponent } from './components/places/places.component';
+import { DetailComponent } from './components/detail/detail.component';
+import { ContactComponent } from './components/contact/contact.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { CreatePlaceComponent } from './components/create-place/create-place.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 // Env
 import { environment } from '../environments/environment';
