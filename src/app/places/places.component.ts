@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlacesService } from '../services/places.service';
-import { trigger, state, style } from '@angular/animations';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-places',
@@ -17,7 +17,9 @@ import { trigger, state, style } from '@angular/animations';
         opacity: 1,
         backgroundColor: 'yellow',
         transform: 'rotate3d(5, 10, 20, 30deg)'
-      }))
+      })),
+      transition('initial => final', animate(1000)),
+      transition('final => initial', animate(500)),
     ])
   ]
 })
@@ -36,5 +38,10 @@ export class PlacesComponent implements OnInit {
         },
         error => this.error = `Error: ${error.statusText}.`
       );
+  }
+
+  animate() {
+    this.state = (this.state === 'final') ?
+      'initial' : 'final';
   }
 }

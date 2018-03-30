@@ -6,6 +6,7 @@
   <a class="btn btn-primary btn-sm" routerLink="/create-place/new">Create place</a>
   <br>
   <div id="square" [@animatedContainer]="state"></div>
+  <button class="btn btn-default" (click)="animate()">Animate</button>
   <br>
   <ul>
     <ng-container *ngFor="let place of places">
