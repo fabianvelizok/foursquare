@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PlacesService} from '../../services/places.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
+import { Http } from '@angular/http';
+import { Observable } from 'rxjs';
+import 'rxjs/Rx';
 
 @Component({
   selector: 'app-create-place',
@@ -11,15 +15,28 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class CreatePlaceComponent implements OnInit {
   place: any = {};
   id: any = null;
-  isEditing: boolean = true;
+  isEditing = true;
+  results$: Observable<any>;
+  geocodeUrl = `http://maps.google.com/maps/api/geocode/json`;
+  private searchField: FormControl;
 
   constructor(
     private placesService: PlacesService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private http: Http
   ) {
     this.id = this.route.snapshot.params['id'];
     this.isEditing = Boolean(this.id);
+
+    // Typeahead
+    this.searchField = new FormControl(); // Extend model
+    this.results$ = this.searchField.valueChanges
+      .debounceTime(500)
+      .switchMap(query => this.http.get(`${this.geocodeUrl}?address=${query}`))
+      .map(response => response.json())
+      .map(response => response.results);
+    console.log(this.results$);
   }
 
   ngOnInit () {
@@ -63,5 +80,17 @@ export class CreatePlaceComponent implements OnInit {
   private cleanFormAndRedirect() {
     this.place = {};
     this.router.navigate(['places']);
+  }
+
+  private selectResult(result) {
+    const addressComponents = result.address_components;
+    this.place.street = `${this.findPlaceInResults('route', addressComponents)} ${this.findPlaceInResults('street_number', addressComponents)}`;
+    this.place.city = this.findPlaceInResults('locality', addressComponents);
+    this.place.country = this.findPlaceInResults('country', addressComponents);
+  }
+
+  private findPlaceInResults(place, addressComponents) {
+    const result = addressComponents.find(address => address.types.includes(place));
+    return result ? result.long_name : '';
   }
 }

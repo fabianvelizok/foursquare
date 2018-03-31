@@ -2,7 +2,7 @@
 import { AngularFireModule } from 'angularfire2';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -72,6 +72,7 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     AgmCoreModule.forRoot({
       apiKey: environment.googleApiKey
     }),

@@ -44,7 +44,20 @@
       </div>
     </div>
 
-    <h2>Adress</h2>
+    <div class="bg-light p-2 my-4">
+      <h3>Get address from google</h3>
+      <form>
+        <input type="text" class="form-control" [formControl]="searchField">
+      </form>
+      <ul class="list-group">
+        <li class="list-group-item list-item-address" *ngFor="let result of results$ | async"
+            (click)="selectResult(result)">
+          {{result.formatted_address}}
+        </li>
+      </ul>
+    </div>
+
+    <h4>Address</h4>
     <div class="form-group">
       <label for="street">Street</label>
       <input type="text" class="form-control" id="street" placeholder="Enter street" [(ngModel)]="place.street" name="street">
